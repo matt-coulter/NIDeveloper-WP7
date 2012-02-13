@@ -7,13 +7,12 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    mc:Ignorable="d" d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" d:DesignHeight="696" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -22,7 +21,7 @@
             <!--Pivot item one-->
             <controls:PivotItem Header="Latest Posts">
                 <!--Double line list with text wrapping-->
-                <ListBox x:Name="LatestPosts" Margin="0,0,-12,0" ItemsSource="{Binding Items}" SelectionChanged="LatestPosts_SelectionChanged">
+                <ListBox x:Name="LatestPosts" Margin="0,0,-12,0" ItemsSource="{Binding Items}" SelectionChanged="LatestPosts_SelectionChanged" Height="567">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,17" Width="432">
@@ -48,19 +47,24 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
             </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem Header="Search">
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                    <Button Content="Search" Margin="0,171,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"/>
+                    <TextBox KeyDown="SearchQuery_KeyDown" Name="SearchQuery" Margin="0,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                </Grid>
+            </controls:PivotItem>
         </controls:Pivot>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+                <shell:ApplicationBarMenuItem Text="About" Click="ApplicationBarMenuItem_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

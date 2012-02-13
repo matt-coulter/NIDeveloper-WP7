@@ -61,6 +61,9 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -69,6 +72,9 @@
     </Compile>
     <Compile Include="BlogPost.xaml.cs">
       <DependentUpon>BlogPost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResults.xaml.cs">
+      <DependentUpon>SearchResults.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BlogJsonContainer.cs" />
     <Compile Include="ViewModels\BlogModel.cs" />
@@ -88,6 +94,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BlogCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="SearchResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
@@ -119,6 +133,9 @@
     <Content Include="Images\appbar.chevron.left.png" />
     <Content Include="Images\appbar.chevron.right.png" />
     <Content Include="Images\appbar.pin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MarketplaceIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />

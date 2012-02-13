@@ -69,5 +69,30 @@ namespace NIDeveloperWP7
             // Reset selected index to -1 (no selection)
             CategoriesList.SelectedIndex = -1;
         }
+
+        private void callQuery()
+        {
+            String query = SearchQuery.Text;
+            if (query != "")
+                NavigationService.Navigate(new Uri("/SearchResults.xaml?query=" + query, UriKind.Relative));
+        }
+
+        private void SearchQuery_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                callQuery();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            callQuery();
+        }
+
+        private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/About.xaml", UriKind.Relative));
+        }
     }
 }

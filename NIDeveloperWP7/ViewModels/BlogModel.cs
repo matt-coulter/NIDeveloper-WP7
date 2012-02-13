@@ -57,6 +57,22 @@ namespace NIDeveloperWP7
             this.IsDataLoaded = true;
         }
 
+        /// <summary>
+        /// Creates and adds a few ItemViewModel objects into the Items collection.
+        /// </summary>
+        public void LoadSearch(String query)
+        {
+            this.Items.Clear();
+
+            var webClient = new WebClient();
+
+            webClient.OpenReadCompleted += onLoaded;
+
+            webClient.OpenReadAsync(new Uri("http://www.nideveloper.co.uk/json/search/" + query, UriKind.Absolute));
+
+            this.IsDataLoaded = true;
+        }
+
         public static byte[] StrToByteArray(string str)
         {
             System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -74,6 +90,7 @@ namespace NIDeveloperWP7
 
         private void onLoaded(object sender, OpenReadCompletedEventArgs e)
         {
+            this.Items.Clear();
             MemoryStream ms = new MemoryStream();
             e.Result.Position = 0;
             var sr = new StreamReader(e.Result);
@@ -85,7 +102,6 @@ namespace NIDeveloperWP7
             BlogJsonContainer sampleData = (BlogJsonContainer)Deserialize(ms, typeof(BlogJsonContainer));
 
             ms.Close();
-            this.Items.Clear();
             foreach (BlogPostModel post in sampleData.posts)
             {
                 this.Items.Add(post);

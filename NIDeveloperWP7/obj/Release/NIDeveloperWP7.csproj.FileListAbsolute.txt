@@ -16,3 +16,24 @@ c:\users\matt\documents\visual studio 2010\Projects\NIDeveloperWP7\NIDeveloperWP
 c:\users\matt\documents\visual studio 2010\Projects\NIDeveloperWP7\NIDeveloperWP7\obj\Release\XapCacheFile.xml
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\NIDeveloperWP7\NIDeveloperWP7\obj\Release\BlogCategory.g.i.cs
 C:\Users\Matt\documents\visual studio 2010\Projects\NIDeveloperWP7\NIDeveloperWP7\Bin\Release\Images\appbar.pin.png
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\ApplicationIcon.png
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\Background.png
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\Images\appbar.pin.png
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\NIDeveloperWP7.dll
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\NIDeveloperWP7.pdb
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\AppManifest.xaml
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\NIDeveloperWP7.xap
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\Microsoft.Phone.Controls.dll
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\Microsoft.Phone.Controls.xml
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\App.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\BlogCategory.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\BlogPost.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\MainPage.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\SearchResults.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\NIDeveloperWP7.g.resources
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\NIDeveloperWP7.dll
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\NIDeveloperWP7.pdb
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\XapCacheFile.xml
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\MarketplaceIcon.png
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\About.g.i.cs
