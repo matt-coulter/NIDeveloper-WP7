@@ -28,7 +28,6 @@ namespace NIDeveloperWP7
         List<string> URLStack = new List<string>();
         int position = -1;
         bool navigationButtonClicked = false;
-        private bool IsDataLoaded;
 
         public BlogPost()
         {
@@ -68,8 +67,6 @@ namespace NIDeveloperWP7
             webClient.OpenReadCompleted += onLoaded;
 
             webClient.OpenReadAsync(new Uri("http://www.nideveloper.co.uk/json/post/"+id, UriKind.Absolute));
-
-            this.IsDataLoaded = true;
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -97,10 +94,18 @@ namespace NIDeveloperWP7
         // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //string blueprintID = "";
-            if (NavigationContext.QueryString.TryGetValue("postID", out blogPostID))
+            try
             {
-                this.webBrowser1.Navigate(new Uri("http://mobile.nideveloper.co.uk/blog/post/" + blogPostID));
+                //string blueprintID = "";
+                if (NavigationContext.QueryString.TryGetValue("postID", out blogPostID))
+                {
+                    this.webBrowser1.Navigate(new Uri("http://mobile.nideveloper.co.uk/blog/post/" + blogPostID));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please Check that you have an internet connection");
+                Console.Write(ex.Message);
             }
         }
 
@@ -158,25 +163,42 @@ namespace NIDeveloperWP7
         private void onLoaded(object sender, OpenReadCompletedEventArgs e)
         {
             MemoryStream ms = new MemoryStream();
-            e.Result.Position = 0;
-            var sr = new StreamReader(e.Result);
-            var myStr = sr.ReadToEnd();
-            ms.Write(StrToByteArray(myStr), 0, myStr.Length);
-            ms.Position = 0;
-
-            // deserialization
-            BlogJsonContainer sampleData = (BlogJsonContainer)Deserialize(ms, typeof(BlogJsonContainer));
-
-            ms.Close();
-            this.Items.Clear();
-            foreach (BlogPostModel post in sampleData.posts)
+            try
             {
-                this.Items.Add(post);
-                this.blogPostName = post.Name;
-                this.blogPostDescription = post.Description;
-            }
+                e.Result.Position = 0;
+                var sr = new StreamReader(e.Result);
+                var myStr = sr.ReadToEnd();
+                ms.Write(StrToByteArray(myStr), 0, myStr.Length);
+                ms.Position = 0;
 
-            create_tile();
+                // deserialization
+                BlogJsonContainer sampleData = (BlogJsonContainer)Deserialize(ms, typeof(BlogJsonContainer));
+
+                this.Items.Clear();
+                foreach (BlogPostModel post in sampleData.posts)
+                {
+                    this.Items.Add(post);
+                    this.blogPostName = post.Name;
+                    this.blogPostDescription = post.Description;
+                }
+
+                create_tile();
+            }
+            catch (Exception ex)
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Please check you have an internet connection");
+                }
+            }
+            finally
+            {
+                ms.Dispose();
+            }
         }
     }
 }

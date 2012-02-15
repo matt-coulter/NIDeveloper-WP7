@@ -8,6 +8,7 @@ using NIDeveloperWP7.ViewModels;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Windows;
 
 namespace NIDeveloperWP7
 {
@@ -92,20 +93,39 @@ namespace NIDeveloperWP7
         {
             this.Items.Clear();
             MemoryStream ms = new MemoryStream();
-            e.Result.Position = 0;
-            var sr = new StreamReader(e.Result);
-            var myStr = sr.ReadToEnd();
-            ms.Write(StrToByteArray(myStr), 0, myStr.Length);
-            ms.Position = 0;
-
-            // deserialization
-            BlogJsonContainer sampleData = (BlogJsonContainer)Deserialize(ms, typeof(BlogJsonContainer));
-
-            ms.Close();
-            foreach (BlogPostModel post in sampleData.posts)
+            try
             {
-                this.Items.Add(post);
+                e.Result.Position = 0;
+                var sr = new StreamReader(e.Result);
+                var myStr = sr.ReadToEnd();
+                ms.Write(StrToByteArray(myStr), 0, myStr.Length);
+                ms.Position = 0;
+
+                // deserialization
+                BlogJsonContainer sampleData = (BlogJsonContainer)Deserialize(ms, typeof(BlogJsonContainer));
+
+                foreach (BlogPostModel post in sampleData.posts)
+                {
+                    this.Items.Add(post);
+                }
             }
+            catch (Exception exception)
+            {
+                this.Items.Clear();
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Please check that you have an internet connection");
+                }
+            }
+            finally
+            {
+                ms.Dispose();
+            }
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

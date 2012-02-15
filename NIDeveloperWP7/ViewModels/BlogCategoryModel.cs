@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 
 namespace NIDeveloperWP7.ViewModels
@@ -129,20 +130,38 @@ namespace NIDeveloperWP7.ViewModels
         private void onLoaded(object sender, OpenReadCompletedEventArgs e)
         {
             MemoryStream ms = new MemoryStream();
-            e.Result.Position = 0;
-            var sr = new StreamReader(e.Result);
-            var myStr = sr.ReadToEnd();
-            ms.Write(StrToByteArray(myStr), 0, myStr.Length);
-            ms.Position = 0;
-
-            // deserialization
-            BlogCategoryJsonContainer sampleData = (BlogCategoryJsonContainer)Deserialize(ms, typeof(BlogCategoryJsonContainer));
-
-            ms.Close();
-            this.Items.Clear();
-            foreach (BlogCategoryModel category in sampleData.categories)
+            try
             {
-                this.Items.Add(category);
+                e.Result.Position = 0;
+                var sr = new StreamReader(e.Result);
+                var myStr = sr.ReadToEnd();
+                ms.Write(StrToByteArray(myStr), 0, myStr.Length);
+                ms.Position = 0;
+
+                // deserialization
+                BlogCategoryJsonContainer sampleData = (BlogCategoryJsonContainer)Deserialize(ms, typeof(BlogCategoryJsonContainer));
+
+                this.Items.Clear();
+                foreach (BlogCategoryModel category in sampleData.categories)
+                {
+                    this.Items.Add(category);
+                }
+            }
+            catch (Exception exception)
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Please check that you have an internet connection");
+                }
+                
+            }
+            finally
+            {
+                ms.Dispose();
             }
         }
 

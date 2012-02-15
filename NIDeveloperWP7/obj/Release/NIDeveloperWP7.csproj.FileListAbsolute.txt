@@ -37,3 +37,5 @@ C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\NIDeveloperWP7.
 C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\XapCacheFile.xml
 C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\MarketplaceIcon.png
 C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\obj\Release\About.g.i.cs
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\NIDeveloperWP7.dll.CodeAnalysisLog.xml
+C:\Users\Matt\Desktop\NIDeveloper-WP7\NIDeveloperWP7\Bin\Release\NIDeveloperWP7.dll.lastcodeanalysissucceeded
