@@ -74,6 +74,7 @@ namespace NIDeveloperWP7
             if (position > 0)
             {
                 this.navigationButtonClicked = true;
+                this.webBrowser1.IsScriptEnabled = true;
                 this.webBrowser1.Navigate(new Uri(this.URLStack[position - 1].ToString()));
                 position--;
             }
@@ -86,6 +87,7 @@ namespace NIDeveloperWP7
             if (this.URLStack.Count > position + 1)
             {
                 this.navigationButtonClicked = true;
+                this.webBrowser1.IsScriptEnabled = true;
                 this.webBrowser1.Navigate(new Uri(this.URLStack[position + 1].ToString()));
                 position++;
             }
@@ -99,6 +101,7 @@ namespace NIDeveloperWP7
                 //string blueprintID = "";
                 if (NavigationContext.QueryString.TryGetValue("postID", out blogPostID))
                 {
+                    this.webBrowser1.IsScriptEnabled = true;
                     this.webBrowser1.Navigate(new Uri("http://mobile.nideveloper.co.uk/blog/post/" + blogPostID));
                 }
             }
